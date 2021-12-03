@@ -42,6 +42,7 @@ class SpendingChart extends StatelessWidget {
                       color: getCategoryColor(category),
                       radius: 100.0,
                       title: '\₹${amountSpent.toStringAsFixed(2)}',
+                      titleStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 18),
                       value: amountSpent,
                     ),
                   ))
