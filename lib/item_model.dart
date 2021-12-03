@@ -7,11 +7,12 @@ class Item{
 
   factory Item.fromMap(Map<String, dynamic> map) {    //take data as a Map as map
     final properties = map['properties'] as Map<String, dynamic>;
+    final nameList = (properties['Name']?['title'] ?? []) as List;
     final dateStr = properties['Date']?['date']?['start'];
     return Item(
-        name: properties['Name']?['title']?[0]?['plain_text'] ?? '?',
-        category: properties['category']?['select']?['name'] ?? 'Any',
-      price: (properties['price']?['Number']?['name'] ?? 0).toDouble(),
+        name: nameList.isNotEmpty ? nameList[0]['plain_text'] : '?',
+        category: properties['Category']?['select']?['name'] ?? 'Any',
+      price: (properties['Price']?['number'] ?? 0).toDouble(),
       date: dateStr != null ? DateTime.parse(dateStr) : DateTime.now(),
     );
   }
